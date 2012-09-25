@@ -1,0 +1,7 @@
+#local pull of drupal
+git pull origin $3 || exit 1;
+git submodule init || exit 1;
+git submodule update || exit 1;
+drush updatedb -y || exit 1;
+drush features-revert-all -y || exit 1;
+drush cc all || exit 1;
